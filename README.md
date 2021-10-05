@@ -3,10 +3,10 @@ This project first aims to propose a reliable evaluation criterion of the curve 
 
 Main tasks: 
 
-Literature review about fitting quality evaluation and parameter optimization approaches. 
+ - Literature review about fitting quality evaluation and parameter optimization approaches. 
 
-Development of the evaluation criteria of curve fitting quality. 
+ - Development of the evaluation criteria of curve fitting quality. 
 
-Automatic control of CP simulation on the CSC platform. 
+ - Automatic control of CP simulation on the CSC platform. 
 
-Program-driven control of CP parameter optimization.  
+ - Program-driven control of CP parameter optimization.  
