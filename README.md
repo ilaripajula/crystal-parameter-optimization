@@ -1,5 +1,5 @@
 # crystal-parameter-optimization
-This project first aims to propose a reliable evaluation criterion of the curve fitting quality by Matlab or Python. The development of an efficient and automatic parameter calibration process based on the Finnish CSC platform is the second objective. 
+This project first aims to develop an efficient and automatic material parameter calibration process based on DAMASK running on the Finnish CSC platform. 
 
 Main tasks: 
 
