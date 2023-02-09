@@ -17,16 +17,14 @@ def preprocess(path, to_csv=False):
     true_plastic_strain = getTruePlasticStrain(strain,stress)
     
     if to_csv:
-        name_list = path.split('/')
         data = {
            "Trimmed Stress" : trimmedStress,
            "Trimmed Strain" : trimmedTrueStrain
         }
         newdf = pd.DataFrame(data)
-        newdf.to_csv(name_list[-1] + ".csv", index=False)
+        newdf.to_csv(f"{path}/flowcurve.csv", index=False)
     
     return (true_plastic_strain.to_numpy(), stress.to_numpy())
-
 
 def getTruePlasticStrain(strain, stress):
     # Getting the slope
@@ -65,24 +63,6 @@ def plot(elasticStress, elasticStrain, trimmedStress, trimmedStrain, trimmedTrue
     plt.figure(figsize = (6,6))
     plt.show()
 
-def save_outputs(directory, save_to, save_csv=False):
-    vr = {}
-    for root, dirs, files in os.walk(directory):
-        for i in files:
-            if i.endswith('.txt'):
-                processed = preprocess(root+i)
-                params = tuple(float(p) for p in i[:-4].split('_'))
-                vr[params] = processed
-                if save_csv:
-                    data = {
-                       "Trimmed Stress" : processed[1],
-                       "Trimmed Strain" : processed[0],
-                    }
-                    newdf = pd.DataFrame(data)
-                    newdf.to_csv(f"{save_to}/{i[:-4]}.csv", index=False)
-        break # Prevents os.walk from recurisvely going through folders
-    return vr
-
 def adjR(x, y, degree):
     results = []
     coeffs = np.polyfit(x, y, degree)
@@ -94,10 +74,3 @@ def adjR(x, y, degree):
     results = 1- (((1-(ssreg/sstot))*(len(y)-1))/(len(y)-degree-1))
     return results
 
-
-
-
-def save_single_output(directory, file, save_csv=False):
-    vr = {}
-    processed = preprocess(directory+file)
-    return processed
